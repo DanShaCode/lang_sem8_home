@@ -1,13 +1,4 @@
-﻿// Задача 54: Задайте двумерный массив. 
-// Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// В итоге получается вот такой массив:
-// 7 4 2 1
-// 9 5 3 2
-// 8 4 4 2
+﻿// Задача 54.
 
 void FillArr (int [,] fillRnd)
 {
@@ -32,6 +23,29 @@ void PrintArr (int [,] arrPrint)
     }
 }
 
+void SortArray (int [,] rowSorting)
+{
+    int box = 0;
+    for (int ind = 0; ind < rowSorting.GetLength(0); ind++) // Щелкаем строки
+    {
+        for (int jnd = 0; jnd < rowSorting.GetLength(1); jnd++) // Щелкаем столбцы
+        {
+            for (int x = 0; x < rowSorting.GetLength(1) - 1; x++) // Сортируем массив
+            {
+                if (rowSorting[ind, x] < rowSorting[ind, x + 1]) // Условие сортировки
+                {
+                    box = rowSorting[ind, x];
+                    rowSorting[ind, x] = rowSorting[ind, x + 1];
+                    rowSorting[ind, x + 1] = box;
+                }
+            }
+        }
+    }     
+}
+
+Console.WriteLine();
+Console.WriteLine("Данная программа создает случайный массив"); 
+Console.WriteLine("и сортирует элементы массива в каждой строчке по убыванию.");
 Console.WriteLine();
 Console.WriteLine("Задайте массив");
 Console.WriteLine();
@@ -45,5 +59,10 @@ int [,] newArray = new int [userDataR,userDataC];
 FillArr(newArray);
 Console.WriteLine();
 Console.WriteLine("Сгенерированный массив: ");
+Console.WriteLine();
+PrintArr(newArray);
+Console.WriteLine();
+SortArray(newArray);
+Console.WriteLine("Отсортированный массив: ");
 Console.WriteLine();
 PrintArr(newArray);
