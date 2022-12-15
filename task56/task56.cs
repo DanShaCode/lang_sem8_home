@@ -37,6 +37,16 @@ void PrintArr (int [,] arrPrint)
     }
 }
 
+int SumLineElements(int[,] sumArr, int i) 
+{
+  int sumLine = sumArr[i,0]; 
+  for (int j = 1; j < sumArr.GetLength(1); j++)
+  {
+    sumLine += sumArr[i,j];
+  }
+  return sumLine;
+}
+
 Console.WriteLine();
 Console.WriteLine("Задайте размер массива.");
 Console.WriteLine();
@@ -52,7 +62,17 @@ Console.WriteLine();
 Console.WriteLine("Сгенерированный прямоугольный массив: ");
 Console.WriteLine();
 PrintArr(newArray);
-Console.WriteLine();
-Console.WriteLine("Сумма элементов в каждой строке: ");
-Console.WriteLine();
 
+int minSumLine = 0;
+int sumLine = SumLineElements(newArray, 0);
+for (int i = 1; i < newArray.GetLength(0); i++)
+{
+  int tempSumLine = SumLineElements(newArray, i);
+  if (sumLine > tempSumLine)
+  {
+    sumLine = tempSumLine;
+    minSumLine = i;
+  }
+}
+
+Console.WriteLine($"\n{minSumLine+1} - строкa с наименьшей суммой ({sumLine}) элементов ");
