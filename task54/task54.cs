@@ -47,7 +47,7 @@ Console.WriteLine();
 Console.WriteLine("Данная программа создает случайный массив"); 
 Console.WriteLine("и сортирует элементы массива в каждой строчке по убыванию.");
 Console.WriteLine();
-Console.WriteLine("Задайте массив");
+Console.WriteLine("Задайте размер массива.");
 Console.WriteLine();
 Console.Write("Введите кодличество строк: ");
 int userDataR = Convert.ToInt32(Console.ReadLine());
