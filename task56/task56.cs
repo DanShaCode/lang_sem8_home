@@ -16,11 +16,11 @@
 
 void FillArr (int [,] fillRnd)
 {
-    for (int ind = 0; ind < fillRnd.GetLength(0); ind++)
+    for (int i = 0; i < fillRnd.GetLength(0); i++)
     {
-        for (int jnd = 0; jnd < fillRnd.GetLength(1); jnd++)
+        for (int j = 0; j < fillRnd.GetLength(1); j++)
         {
-            fillRnd[ind, jnd] = new Random().Next(1,10);
+            fillRnd[i, j] = new Random().Next(1,10);
         }
     }
 }
@@ -34,21 +34,6 @@ void PrintArr (int [,] arrPrint)
             Console.Write($"{arrPrint[index, jndex]} ");
         }
         Console.WriteLine();
-    }
-}
-
-void SumElRow (int [] num)
-{
-    int box = 0;
-    for (int i = 0; i < num.GetLength(0); i++)
-    {
-        for (int j = 0; j < num.GetLength(1); j++)
-        {
-            for (int z = 0; z <= num.GetLength(1) - 1; z++)
-            {
-                 
-            }
-        }
     }
 }
 
@@ -70,3 +55,4 @@ PrintArr(newArray);
 Console.WriteLine();
 Console.WriteLine("Сумма элементов в каждой строке: ");
 Console.WriteLine();
+
