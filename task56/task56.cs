@@ -21,7 +21,7 @@ void FillMultiArr (int [,] fillRnd)
     {
         for (int j = 0; j < fillRnd.GetLength(1); j++)
         {
-            fillRnd[i, j] = new Random().Next(1,101);
+            fillRnd[i, j] = new Random().Next(10,100);
         }
     }
 }
