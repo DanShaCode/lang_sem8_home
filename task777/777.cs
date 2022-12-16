@@ -30,7 +30,7 @@ void PrintArr (int [] print)
     }
 }
 
-// Считаем сумму элементов в массиве
+// Вычисляем минимальную сумму строк в массиве т выдаем строку в консоль
 void FindMinCol (int [] min)
 {
     int length = min.Length;

@@ -14,18 +14,20 @@
 // Программа считает сумму элементов в каждой строке 
 // и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-void FillArr (int [,] fillRnd)
+// Наполняем двумерный массив случайными числами
+void FillMultiArr (int [,] fillRnd)
 {
     for (int i = 0; i < fillRnd.GetLength(0); i++)
     {
         for (int j = 0; j < fillRnd.GetLength(1); j++)
         {
-            fillRnd[i, j] = new Random().Next(1,10);
+            fillRnd[i, j] = new Random().Next(1,101);
         }
     }
 }
 
-void PrintArr (int [,] arrPrint)
+// Печатаем двумерный массив
+void PrintMuliArr (int [,] arrPrint)
 {
     for (int index = 0; index < arrPrint.GetLength(0); index++)
     {
@@ -37,14 +39,45 @@ void PrintArr (int [,] arrPrint)
     }
 }
 
-int SumLineElements(int[,] sumArr, int i) 
+// Считаем сумму строк в двумерном массиве и отдаем значение суммы как элемент нового массива
+int [] ColSum (int [,] arr) 
 {
-  int sumLine = sumArr[i,0]; 
-  for (int j = 1; j < sumArr.GetLength(1); j++)
-  {
-    sumLine += sumArr[i,j];
-  }
-  return sumLine;
+    int [] newArray = new int [arr.GetLength(0)];
+    int sum = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            sum = sum + arr[i, j];
+        }
+        newArray[i] = sum;
+        sum = 0;
+    }
+    // Возвращаем созданный массив
+    return newArray; 
+}
+
+// Вычисляем минимальную сумму строк в массиве т выдаем строку в консоль
+void FindMinCol (int [] min)
+{
+    int length = min.Length;
+    int i = 0;
+    int minimum = min[i];
+    int col = 0;
+    for (i = 0; i < length - 1; i++)
+    {
+      if (minimum > min[i + 1]) 
+      {
+        minimum = min[i + 1];
+        col = i + 1;
+      }
+      else 
+      {
+        minimum = min[i];
+      } 
+    }
+    Console.WriteLine();
+    Console.WriteLine($"{"Минимальное значение суммы элементов"} ({minimum}) {"в строке"} {col + 1}");
 }
 
 Console.WriteLine();
@@ -57,22 +90,11 @@ int userDataC = Convert.ToInt32(Console.ReadLine());
 
 int [,] newArray = new int [userDataR,userDataC];
 
-FillArr(newArray);
+FillMultiArr(newArray);
 Console.WriteLine();
 Console.WriteLine("Сгенерированный прямоугольный массив: ");
 Console.WriteLine();
-PrintArr(newArray);
-
-int minSumLine = 0;
-int sumLine = SumLineElements(newArray, 0);
-for (int i = 1; i < newArray.GetLength(0); i++)
-{
-  int tempSumLine = SumLineElements(newArray, i);
-  if (sumLine > tempSumLine)
-  {
-    sumLine = tempSumLine;
-    minSumLine = i;
-  }
-}
-
-Console.WriteLine($"\n{minSumLine+1} - строкa с наименьшей суммой ({sumLine}) элементов ");
+PrintMuliArr(newArray);
+ColSum(newArray);
+int [] newArr = ColSum(newArray);
+FindMinCol(newArr);
