@@ -1,4 +1,16 @@
-﻿int[,] snake = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+﻿
+int[,] snake = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+
+Console.WriteLine();
+Console.WriteLine("Заданный пустой массив 4 * 4:");
+Console.WriteLine();
+PrintArr(snake);
+Console.WriteLine();
+SnakeFillArr(snake);
+Console.WriteLine();
+Console.WriteLine("Этот же массив заполненный числами по спирали: ");
+Console.WriteLine();
+PrintArr(snake);
 
 void PrintArr(int[,] arr)
 {
@@ -50,6 +62,12 @@ void SnakeFillArr(int[,] arr)
                             temp4++;
                             int c = 2;
                             arr[v,c] = temp4;
+                            int temp5 = temp4;
+                            for (int q = 1; q < arr.GetLength(1) - 2;q++) // от 15 до 16 влево
+                            {
+                                int s = 2;
+                                arr[s,q] = temp5 + 1;
+                            }
                         }
                     }
                 }
@@ -58,8 +76,3 @@ void SnakeFillArr(int[,] arr)
     }
 }
 
-Console.WriteLine();
-PrintArr(snake);
-Console.WriteLine();
-SnakeFillArr(snake);
-PrintArr(snake);
