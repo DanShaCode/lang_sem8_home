@@ -38,6 +38,20 @@ void SnakeFillArr(int[,] arr)
                     temp2--;
                     int b = 0;
                     arr[a,b] = temp2;
+                    int temp3 = temp2 + 1;
+                    for (int z = 1; z < arr.GetLength(1) - 1; z++) // от 12 до 14 вправо
+                    {
+                        temp3 = temp3 + 1;
+                        int g = 1;
+                        arr[g,z] = temp3;
+                        int temp4 = temp3 - 1;
+                        for (int v = 1; v < arr.GetLength(0) - 1; v++) // от 14 до 15 вниз
+                        {
+                            temp4++;
+                            int c = 2;
+                            arr[v,c] = temp4;
+                        }
+                    }
                 }
             }
         }
