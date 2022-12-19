@@ -18,28 +18,40 @@ int h = array.GetLength(1) - 1;
 int row = 0;
 int col = 0;
 int num = 1;
-
 Console.WriteLine();
-Console.WriteLine("Заданный пустой массив 4 * 4:");
+Console.WriteLine("Пустой массив 4 * 4:");
 Console.WriteLine();
-PrintArr(array);
+PrintZero(array);
 Console.WriteLine();
 SnakeFill(array);
-Console.WriteLine();
 Console.WriteLine("Этот же массив заполненный числами по спирали: ");
 Console.WriteLine();
-PrintArr(array);
+PrintSnake(array);
 
-void PrintArr(int[,] arr)
+void PrintZero (int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i,j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void PrintSnake(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            Console.Write($"{arr[i, j]} ");
+            int num = array[i,j];
+            Console.Write($"{num.ToString("00")} ");
         }
         Console.WriteLine();
     }
+
 }
 
 void SnakeFill(int[,] array)
