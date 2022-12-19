@@ -11,18 +11,24 @@
 
 // Начало программы ==============================================================================
 
-int[,] snake = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+int[,] array = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+
+int w = array.GetLength(0) - 1;
+int h = array.GetLength(1) - 1;
+int row = 0;
+int col = 0;
+int num = 1;
 
 Console.WriteLine();
 Console.WriteLine("Заданный пустой массив 4 * 4:");
 Console.WriteLine();
-PrintArr(snake);
+PrintArr(array);
 Console.WriteLine();
-SnakeFillArr(snake);
+SnakeFill(array);
 Console.WriteLine();
 Console.WriteLine("Этот же массив заполненный числами по спирали: ");
 Console.WriteLine();
-PrintArr(snake);
+PrintArr(array);
 
 void PrintArr(int[,] arr)
 {
@@ -36,54 +42,40 @@ void PrintArr(int[,] arr)
     }
 }
 
-void SnakeFillArr(int[,] arr)
+void SnakeFill(int[,] array)
 {
-    int num = 0;
-    for (int j = 0; j < arr.GetLength(1) - 1; j++)
+    for (col = 0; col <= w; col++)
     {
+        array[row, col] = num;
         num++;
-        int i = 0;
-        arr[i, j] = num;
-        int temp = num;
-        for (int k = 0; k < arr.GetLength(0) - 1; k++)
-        {
-            temp++;
-            int l = 3;
-            arr[k, l] = temp;
-            int temp1 = temp + 5;
-            for (int x = 0; x < arr.GetLength(1); x++)
-            {
-                temp1--;
-                int y = 3;
-                arr[y, x] = temp1;
-                int temp2 = temp1 + 6;
-                for (int a = 1; a < arr.GetLength(0) - 1; a++)
-                {
-                    temp2--;
-                    int b = 0;
-                    arr[a, b] = temp2;
-                    int temp3 = temp2 + 1;
-                    for (int z = 1; z < arr.GetLength(1) - 1; z++)
-                    {
-                        temp3 = temp3 + 1;
-                        int g = 1;
-                        arr[g, z] = temp3;
-                        int temp4 = temp3 - 1;
-                        for (int v = 1; v < arr.GetLength(0) - 1; v++)
-                        {
-                            temp4++;
-                            int c = 2;
-                            arr[v, c] = temp4;
-                            int temp5 = temp4;
-                            for (int q = 1; q < arr.GetLength(1) - 2; q++)
-                            {
-                                int s = 2;
-                                arr[s, q] = temp5 + 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    }
+    for (row = 1; row <= h - 1; row++)
+    {
+        col = w;
+        array[row, col] = num;
+        num++;
+    }
+    for (col = w; col > 0; col--)
+    {
+        row = h;
+        array[row, col] = num;
+        num++;
+    }
+    for (row = h; row > 1; row--)
+    {
+        col = 0;
+        array[row, col] = num;
+        num++;
+    }
+    for (col = 0; col <= w - 1; col++)
+    {
+        array[row, col] = num;
+        num++;
+    }
+    for (col = w - 1; col > 0; col--)
+    {
+        row = 2;
+        array[row, col] = num;
+        num++;
     }
 }
