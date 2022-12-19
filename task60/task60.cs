@@ -31,7 +31,7 @@ int userDataZ = Convert.ToInt32(Console.ReadLine());
 int checkArray = userDataX * userDataY * userDataZ;
 Console.WriteLine();
 
-if (checkArray > 80
+if (checkArray > 90
  | checkArray == 0
  | userDataX == 0
  | userDataY == 0
@@ -45,14 +45,13 @@ if (checkArray > 80
 
 else
 {
-
     int[,,] array3D = new int[userDataX, userDataY, userDataZ];
     Console.WriteLine();
     FillArr(array3D);
 
     void FillArr(int[,,] arr)
     {
-        Console.WriteLine("Сформированный трехмерный массив: ");
+        Console.WriteLine("Сформированный трехмерный массив:");
         Console.WriteLine();
         int num = 10;
         for (int x = 0; x < arr.GetLength(0); x++)
