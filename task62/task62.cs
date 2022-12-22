@@ -91,3 +91,5 @@ void SnakeFill(int[,] array)
         num++;
     }
 }
+
+// Протестировано 22.12.2022

@@ -66,7 +66,7 @@ void PrintMuliArr(int[,] arrPrint)
     {
         for (int jndex = 0; jndex < arrPrint.GetLength(1); jndex++)
         {
-            Console.Write($"{arrPrint[index, jndex]} {(index, jndex)} ");
+            Console.Write($"{arrPrint[index, jndex]} ");
         }
         Console.WriteLine();
     }
@@ -75,9 +75,9 @@ void PrintMuliArr(int[,] arrPrint)
 int[] ColSum(int[,] arr)
 {
     int[] newArray = new int[arr.GetLength(0)];
-    int sum = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
+        int sum = 0;
         for (int j = 0; j < arr.GetLength(1); j++)
         {
             sum = sum + arr[i, j];
@@ -107,5 +107,7 @@ void FindMinCol(int[] min)
         }
     }
     Console.WriteLine();
-    Console.WriteLine($"{"Минимальное значение суммы элементов"} ({minimum}) {"в строке"} {col + 1}");
+    Console.WriteLine($"{"Минимальное значение суммы элементов в строке"} {col + 1}");
 }
+
+// Протестировано 22.12.2022

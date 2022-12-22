@@ -98,3 +98,5 @@ int[,] MultiMatrix(int[,] a, int[,] b)
     }
     return c;
 }
+
+// Протестировано 22.12.2022
